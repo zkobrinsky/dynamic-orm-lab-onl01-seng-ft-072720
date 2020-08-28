@@ -58,14 +58,13 @@ class InteractiveRecord
     end
 
     def self.find_by(attribute)
-        # binding.pry
         sql = <<-SQL
             SELECT *
             FROM #{self.table_name}
-            WHERE name = ?
+            WHERE #{attribute.keys.first.to_s} = ?
         SQL
 
-        DB[:conn].execute(sql, attribute[:name])
+        DB[:conn].execute(sql, attribute[attribute.keys.first])
     end
 
 
