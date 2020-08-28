@@ -62,10 +62,10 @@ class InteractiveRecord
         sql = <<-SQL
             SELECT *
             FROM #{self.table_name}
-            WHERE attribute.keys = ?
+            WHERE name = ?
         SQL
 
-        DB[:conn].execute(sql, attribute.values)
+        DB[:conn].execute(sql, attribute[:name])
     end
 
 
